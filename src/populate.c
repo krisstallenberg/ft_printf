@@ -6,16 +6,20 @@
 /*   By: kstallen <kstallen@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/02/27 15:47:52 by kstallen       #+#    #+#                */
-/*   Updated: 2020/02/27 16:59:39 by kstallen      ########   odam.nl         */
+/*   Updated: 2020/03/09 11:26:04 by kstallen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
+/*
+** Initializes function-pointer struct and redirects to correct printing funct.
+*/
+
 void	select_printer(t_data *data)
 {
 	int					j;
-	const t_function	function_pointer[9] =
+	static t_function	function_pointer[9] =
 	{
 		{'%', print_per},
 		{'d', print_di},
@@ -37,6 +41,12 @@ void	select_printer(t_data *data)
 		j++;
 	}
 }
+
+/*
+** Populates the width and precision in struct.
+** If '.' is given, but no precision is specified, precision == 0.
+** Default values are -1 for width and -1 for precision.
+*/
 
 void	pop_width_precision(t_data *data)
 {
@@ -66,6 +76,10 @@ void	pop_width_precision(t_data *data)
 		}
 	}
 }
+
+/*
+** Iterates over all '0' and '-' characters and populates flags in stuct.
+*/
 
 void	pop_flag(t_data *data)
 {

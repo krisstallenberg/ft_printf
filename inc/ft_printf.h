@@ -6,16 +6,16 @@
 /*   By: kstallen <kstallen@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/02/27 16:50:25 by kstallen       #+#    #+#                */
-/*   Updated: 2020/03/09 10:56:57 by kstallen      ########   odam.nl         */
+/*   Updated: 2020/03/09 11:03:14 by kstallen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_PRINTF
-# define FT_PRINTF
+#ifndef FT_PRINTF_H
+# define FT_PRINTF_H
 
-#include <stdarg.h>
-#include <stdlib.h>
-#include <unistd.h>
+# include <stdarg.h>
+# include <stdlib.h>
+# include <unistd.h>
 
 typedef	union		u_arg
 {
@@ -23,7 +23,7 @@ typedef	union		u_arg
 	long			li;
 	unsigned long	lu;
 	char			c;
-}					t_arg; 
+}					t_arg;
 
 typedef	struct		s_data
 {
@@ -50,7 +50,7 @@ void				select_printer(t_data *data);
 void				pop_width_precision(t_data *data);
 void				pop_flag(t_data *data);
 void				populate_execute_struct(t_data *data);
-void				reset_struct(t_data *data);			
+void				reset_struct(t_data *data);
 int					intlen(int nb);
 int					lulen(long unsigned nb);
 void				print(void *ptr, t_data *data);
@@ -74,7 +74,7 @@ char				*ft_itoa_base(unsigned long value, int base, char c);
 char				*ft_itoa_base_pointer(unsigned long value, int base);
 void				ft_tolower_string(char **string);
 void				print_width_ascii(t_data *data);
-void    			print_di_reg(t_data *data);
+void				print_di_reg(t_data *data);
 void				print_di_neg(t_data *data);
 void				print_di_neg_prec(t_data *data);
 void				print_di_min(t_data *data);
@@ -84,13 +84,14 @@ void				print_di_neg_zero_prec(t_data *data);
 void				putnbr_unsigned_printf(unsigned int n, t_data *data);
 void				print_di_min_neg(t_data *data);
 void				print_di_min(t_data *data);
-void    			print_lu(t_data *data);
+void				print_lu(t_data *data);
 void				print_lu_min(t_data *data);
-void    			print_hexadecimal(t_data *data);
+void				print_hexadecimal(t_data *data);
 void				print_hexadecimal_min(t_data *data);
 int					ft_atoi(const char *str);
 void				ft_bzero(void *s, size_t n);
 size_t				ft_strlen(const char *str);
 void				*ft_memset(void *b, int c, size_t len);
+static int			is_space(char c);
 
 #endif
