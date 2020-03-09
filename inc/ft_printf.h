@@ -6,9 +6,12 @@
 /*   By: kstallen <kstallen@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/02/27 16:50:25 by kstallen       #+#    #+#                */
-/*   Updated: 2020/02/27 16:59:39 by kstallen      ########   odam.nl         */
+/*   Updated: 2020/03/09 10:56:57 by kstallen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
+
+#ifndef FT_PRINTF
+# define FT_PRINTF
 
 #include <stdarg.h>
 #include <stdlib.h>
@@ -89,3 +92,5 @@ int					ft_atoi(const char *str);
 void				ft_bzero(void *s, size_t n);
 size_t				ft_strlen(const char *str);
 void				*ft_memset(void *b, int c, size_t len);
+
+#endif
