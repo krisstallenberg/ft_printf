@@ -6,7 +6,7 @@
 /*   By: kstallen <kstallen@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/02/27 16:50:25 by kstallen       #+#    #+#                */
-/*   Updated: 2020/03/09 11:40:01 by kstallen      ########   odam.nl         */
+/*   Updated: 2020/03/09 13:27:22 by kstallen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,5 +92,6 @@ int					ft_atoi(const char *str);
 void				ft_bzero(void *s, size_t n);
 size_t				ft_strlen(const char *str);
 void				*ft_memset(void *b, int c, size_t len);
+void				*ft_memmalloc(size_t size);
 
 #endif

@@ -6,7 +6,7 @@
 #    By: kstallen <marvin@codam.nl>                   +#+                      #
 #                                                    +#+                       #
 #    Created: 2020/01/13 16:57:49 by kstallen       #+#    #+#                 #
-#    Updated: 2020/02/27 16:24:56 by kstallen      ########   odam.nl          #
+#    Updated: 2020/03/09 13:51:24 by kstallen      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,7 +28,7 @@ vpath %.c src
 all: $(NAME)
 
 $(NAME): $(OBJ)
-	@$(AR) $@ $^ 
+	@$(AR) $@ $^
 
 $(ODIR)/%.o: %.c $(HDR)
 	@mkdir -p $(ODIR)

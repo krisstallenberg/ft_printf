@@ -6,7 +6,7 @@
 /*   By: kstallen <kstallen@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/02/27 15:47:52 by kstallen       #+#    #+#                */
-/*   Updated: 2020/03/09 11:26:04 by kstallen      ########   odam.nl         */
+/*   Updated: 2020/03/09 13:53:14 by kstallen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,7 @@
 void	select_printer(t_data *data)
 {
 	int					j;
-	static t_function	function_pointer[9] =
-	{
+	static t_function	function_pointer[9] = {
 		{'%', print_per},
 		{'d', print_di},
 		{'i', print_di},

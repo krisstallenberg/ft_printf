@@ -6,7 +6,7 @@
 /*   By: kstallen <kstallen@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/02/27 16:02:22 by kstallen       #+#    #+#                */
-/*   Updated: 2020/02/27 16:59:39 by kstallen      ########   odam.nl         */
+/*   Updated: 2020/03/09 13:50:54 by kstallen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,17 +67,22 @@ char	*ft_itoa_base(unsigned long value, int base, char c)
 	n = value < 0 ? -(long)value : value;
 	sign = (value < 0 && base == 10) ? -1 : 0;
 	i = (sign == -1) ? 2 : 1;
-	while (n /= base)
-		i++;
-	s = (char*)malloc(sizeof(char) * (i + 1));
-	s[i] = '\0';
-	n = value < 0 ? -(long)value : value;
-	while (i-- + sign)
+	n /= base;
+	while (n)
 	{
+		n /= base;
+		i++;
+	}
+	s = (char*)ft_memmalloc(sizeof(char) * (i + 1));
+	n = value < 0 ? -(long)value : value;
+	while (i + sign)
+	{
+		i--;
 		s[i] = (n % base < 10) ? n % base + '0' : n % base + c - 10;
 		n /= base;
 	}
-	(i == 0) ? s[i] = '-' : 0;
+	i--;
+	i == 0 ? s[i] = '-' : 0;
 	return (s);
 }
 
@@ -113,4 +118,15 @@ char	*ft_itoa_base_pointer(unsigned long value, int base)
 	s[i] = 'x';
 	s[i - 1] = '0';
 	return (s);
+}
+
+void	*ft_memmalloc(size_t size)
+{
+	void	*ret;
+
+	ret = malloc(size);
+	if (ret == NULL)
+		return (NULL);
+	ft_bzero(ret, size);
+	return (ret);
 }

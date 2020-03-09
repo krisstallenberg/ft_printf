@@ -6,7 +6,7 @@
 /*   By: kstallen <kstallen@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/02/27 15:53:13 by kstallen       #+#    #+#                */
-/*   Updated: 2020/03/09 11:14:32 by kstallen      ########   odam.nl         */
+/*   Updated: 2020/03/09 11:45:13 by kstallen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,7 @@ void	printf_width_pointer(t_data *data)
 		len = ft_strlen(ft_itoa_base(data->arg.lu, 16, 'a'));
 	if (data->precision > len && !data->flag_zero)
 		fill = '0';
-	if (data->flag_zero && !data->flag_minus && 
+	if (data->flag_zero && !data->flag_minus &&
 	!(data->precision >= 0))
 		fill = '0';
 	while (data->width > len)
