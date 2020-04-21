@@ -64,9 +64,9 @@ char	*ft_itoa_base(unsigned long value, int base, char c)
 	int		sign;
 	int		i;
 
-	n = value < 0 ? -(long)value : value;
-	sign = (value < 0 && base == 10) ? -1 : 0;
-	i = (sign == -1) ? 2 : 1;
+	n = value;
+	sign = 0;
+	i = 1;
 	n /= base;
 	while (n)
 	{
@@ -74,7 +74,7 @@ char	*ft_itoa_base(unsigned long value, int base, char c)
 		i++;
 	}
 	s = (char*)ft_memmalloc(sizeof(char) * (i + 1));
-	n = value < 0 ? -(long)value : value;
+	n = value;
 	while (i + sign)
 	{
 		i--;

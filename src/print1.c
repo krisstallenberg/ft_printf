@@ -20,6 +20,9 @@ void	print_di(t_data *data)
 	calc_field_width(data);
 	if (data->flag_minus && data->arg.li > 0)
 		print_di_min(data);
+	else if (data->flag_zero && !data->flag_minus && 
+	data->precision == -1 && data->arg.li != 0)
+		print_di_zero(data);
 	else if (data->flag_minus && data->arg.li < 0)
 		print_di_min_neg(data);
 	else if (!data->flag_minus && data->arg.li > 0)
@@ -40,8 +43,8 @@ void	print_di(t_data *data)
 void	print_u(t_data *data)
 {
 	data->arg.lu = va_arg(data->var, unsigned int);
-	if (data->arg.lu < 0)
-		data->arg.lu *= -1;
+	// if (data->arg.lu < 0)
+	// 	data->arg.lu *= -1;
 	if (data->arg.lu == 0)
 		print_di_null(data);
 	else if (data->flag_minus)

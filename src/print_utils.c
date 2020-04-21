@@ -63,7 +63,7 @@ void	calc_field_width(t_data *data)
 			&& data->precision >= 0)
 		{
 			data->width -= data->precision < (int)ft_strlen(data->arg.vp) ?
-				data->precision : ft_strlen(data->arg.vp);
+				data->precision : (int)ft_strlen(data->arg.vp);
 		}
 		else
 			data->width -= ft_strlen(data->arg.vp);

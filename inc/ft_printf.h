@@ -87,6 +87,7 @@ void				print_di_min_neg(t_data *data);
 void				print_di_min(t_data *data);
 void				print_di_null(t_data *data);
 void				print_di_null_minus(t_data *data);
+void				print_di_zero(t_data *data);
 void				print_lu(t_data *data);
 void				print_lu_min(t_data *data);
 void				print_hexadecimal(t_data *data);

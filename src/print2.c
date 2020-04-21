@@ -51,10 +51,8 @@ void	print_p(t_data *data)
 	char	*string;
 
 	data->arg.lu = va_arg(data->var, unsigned long);
-	if (!data->arg.lu)
-		string = null_pointer(data);
-	else
-		string = ft_itoa_base_pointer(data->arg.lu, 16);
+	string = !data->arg.lu ? null_pointer(data) :
+	ft_itoa_base_pointer(data->arg.lu, 16);
 	if ((data->precision < (int)ft_strlen(string)) &&
 		(data->width < (int)ft_strlen(string) || data->flag_minus))
 	{
@@ -103,15 +101,16 @@ void	*null_pointer(t_data *data)
 
 	null_len = data->precision > 0 ? data->precision : 0;
 	null_len = data->precision < 0 ? 1 : 0;
-	size = data->precision > 3 ? data->precision : 3;
+	size = data->precision > 3 ? data->precision : 4;
 	ptr = malloc(size);
 	ptr[0] = '0';
 	ptr[1] = 'x';
 	if (null_len)
 		ft_memset(&ptr[2], '0', null_len);
 	if (data->precision < 0)
-		ptr[3]
-	ptr[size] = '\0';
+		ptr[3] = '\0';
+	else
+		ptr[size] = '\0';
 	return (ptr);
 }
 

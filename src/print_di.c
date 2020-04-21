@@ -37,6 +37,21 @@ void	print_di_reg(t_data *data)
 	putnbr_printf(data->arg.li, data);
 }
 
+void	print_di_zero(t_data *data)
+{
+	int	len;
+	
+	len = intlen(data->arg.li);
+	data->arg.li < 0 ? putchar_printf('-', data) : 0;
+	while (data->width > len)
+		{
+			putchar_printf('0', data);
+			data->width--;
+		}
+	data->arg.li < 0 ? putnbr_printf(-data->arg.li, data) :
+	putnbr_printf(data->arg.li, data);
+}
+
 void	print_di_neg_zero(t_data *data)
 {
 	int		len;
@@ -68,9 +83,7 @@ void	print_di_neg_zero(t_data *data)
 void	print_di_neg_zero_prec(t_data *data)
 {
 	int		len;
-	int		field_width;
 
-	field_width = data->width;
 	len = intlen(data->arg.li);
 	putchar_printf('-', data);
 	while (data->precision > len)
@@ -111,9 +124,7 @@ void	print_di_neg(t_data *data)
 void	print_di_neg_prec(t_data *data)
 {
 	int		len;
-	int		field_width;
 
-	field_width = data->width;
 	len = intlen(data->arg.li);
 	data->arg.li *= -1;
 	putchar_printf('-', data);

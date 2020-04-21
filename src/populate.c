@@ -102,8 +102,8 @@ void	pop_flag(t_data *data)
 
 int		is_specifier(char c)
 {
-	if (c == 's' || c == 'c' || c == 'p' || c == 'u'|| c == 'x'|| c == 'X'||
-		c == 'd'|| c == 'i'|| c == '%')
+	if (c == 's' || c == 'c' || c == 'p' || c == 'u' || c == 'x' || c == 'X' ||
+		c == 'd' || c == 'i' || c == '%')
 		return (1);
 	else
 		return (0);

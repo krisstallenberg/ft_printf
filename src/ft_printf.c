@@ -14,7 +14,7 @@
 
 /*
 ** Receives arguments, declares and initiates variable argument list
-** and parses format string. Returns n chars printed or -1 if error.
+** and parses format string. Returns int: n chars printed or neg if error.
 ** Errors: [-1 = no format string][-2 = '%' found at end of format string]
 */
 

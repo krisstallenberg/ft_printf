@@ -34,8 +34,6 @@ void	print_lu(t_data *data)
 	char	fill;
 
 	fill = data->flag_zero && (data->precision < 0) ? '0' : ' ';
-	if (data->arg.lu < 0)
-		data->arg.lu *= -1;
 	len = lulen(data->arg.lu);
 	field_width = data->width > data->precision ?
 	data->width : data->precision;

@@ -12,7 +12,7 @@
 
 NAME = libftprintf.a
 
-CC = gcc
+CC = clang
 AR = ar rcs
 IDIR = inc
 CFLAGS = -g -Wall -Wextra -Werror -I $(IDIR)
@@ -39,6 +39,9 @@ clean:
 
 fclean: clean
 	@$(RM) $(NAME) $(TEST_NAME)
+
+test: all test.c
+	gcc -Wall -Werror -Wextra test.c -L. -no-pie libftprintf.a
 
 re: fclean all
 
