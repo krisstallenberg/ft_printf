@@ -5,8 +5,8 @@
 /*                                                     +:+                    */
 /*   By: kstallen <kstallen@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2020/02/27 15:58:49 by kstallen       #+#    #+#                */
-/*   Updated: 2020/02/27 16:59:39 by kstallen      ########   odam.nl         */
+/*   Created: 2020/02/27 15:58:49 by kstallen      #+#    #+#                 */
+/*   Updated: 2020/04/22 13:30:07 by kris          ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,9 +68,7 @@ void	print_di_neg_zero(t_data *data)
 void	print_di_neg_zero_prec(t_data *data)
 {
 	int		len;
-	int		field_width;
 
-	field_width = data->width;
 	len = intlen(data->arg.li);
 	putchar_printf('-', data);
 	while (data->precision > len)
@@ -86,7 +84,10 @@ void	print_di_neg(t_data *data)
 	int		len;
 	int		field_width;
 
-	data->arg.li *= -1;
+	if (data->arg.li == -2147483648)
+		data->arg.li = 2147483648;
+	else
+		data->arg.li *= -1;
 	len = intlen(data->arg.li) > data->precision ?
 		intlen(data->arg.li) : data->precision;
 	field_width = data->width - 1;
@@ -107,9 +108,7 @@ void	print_di_neg(t_data *data)
 void	print_di_neg_prec(t_data *data)
 {
 	int		len;
-	int		field_width;
 
-	field_width = data->width;
 	len = intlen(data->arg.li);
 	data->arg.li *= -1;
 	putchar_printf('-', data);

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   main.c                                             :+:    :+:            */
+/*   ft_printf.c                                        :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: kstallen <marvin@codam.nl>                   +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2020/01/03 14:08:28 by kstallen       #+#    #+#                */
-/*   Updated: 2020/02/27 15:41:16 by kstallen      ########   odam.nl         */
+/*   Created: 2020/01/03 14:08:28 by kstallen      #+#    #+#                 */
+/*   Updated: 2020/04/22 13:34:41 by kris          ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 /*
 ** Receives arguments, declares and initiates variable argument list
-** and parses format string. Returns n chars printed or -1 if error.
+** and parses format string. Returns int: n chars printed or neg if error.
 ** Errors: [-1 = no format string][-2 = '%' found at end of format string]
 */
 

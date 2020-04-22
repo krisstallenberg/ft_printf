@@ -5,8 +5,8 @@
 /*                                                     +:+                    */
 /*   By: kstallen <kstallen@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2020/02/27 16:50:25 by kstallen       #+#    #+#                */
-/*   Updated: 2020/03/09 13:27:22 by kstallen      ########   odam.nl         */
+/*   Created: 2020/02/27 16:50:25 by kstallen      #+#    #+#                 */
+/*   Updated: 2020/04/22 13:56:51 by kris          ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,8 @@ typedef	struct		s_function
 
 int					ft_printf(const char *format, ...);
 void				select_printer(t_data *data);
-void				pop_width_precision(t_data *data);
+void				pop_width(t_data *data);
+void				pop_precision(t_data *data);
 void				pop_flag(t_data *data);
 void				populate_execute_struct(t_data *data);
 void				reset_struct(t_data *data);
@@ -68,6 +69,7 @@ void				putstr_printf(char *s, size_t len, t_data *data);
 void				putchar_printf(char c, t_data *data);
 void				putnbr_printf(int n, t_data *data);
 char				is_numeric_type(char c);
+int					is_specifier(char c);
 void				print_struct(t_data *data);
 void				calc_field_width(t_data *data);
 char				*ft_itoa_base(unsigned long value, int base, char c);
@@ -84,6 +86,9 @@ void				print_di_neg_zero_prec(t_data *data);
 void				putnbr_unsigned_printf(unsigned int n, t_data *data);
 void				print_di_min_neg(t_data *data);
 void				print_di_min(t_data *data);
+void				print_di_null(t_data *data);
+void				print_di_null_minus(t_data *data);
+void				print_di_zero(t_data *data);
 void				print_lu(t_data *data);
 void				print_lu_min(t_data *data);
 void				print_hexadecimal(t_data *data);
@@ -93,5 +98,8 @@ void				ft_bzero(void *s, size_t n);
 size_t				ft_strlen(const char *str);
 void				*ft_memset(void *b, int c, size_t len);
 void				*ft_memmalloc(size_t size);
-
+void				*ft_memcpy(void *dst, const void *src, size_t n);
+int					ft_strncmp(const char *s1, const char *s2, size_t n);
+void				*null_pointer(t_data *data);
+void				print_hexadecimal_zero_prec(t_data *data);
 #endif

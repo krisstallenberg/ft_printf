@@ -5,8 +5,8 @@
 /*                                                     +:+                    */
 /*   By: kstallen <kstallen@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2020/02/27 15:59:49 by kstallen       #+#    #+#                */
-/*   Updated: 2020/02/27 16:11:04 by kstallen      ########   odam.nl         */
+/*   Created: 2020/02/27 15:59:49 by kstallen      #+#    #+#                 */
+/*   Updated: 2020/04/22 13:31:57 by kris          ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,8 +34,6 @@ void	print_lu(t_data *data)
 	char	fill;
 
 	fill = data->flag_zero && (data->precision < 0) ? '0' : ' ';
-	if (data->arg.lu < 0)
-		data->arg.lu *= -1;
 	len = lulen(data->arg.lu);
 	field_width = data->width > data->precision ?
 	data->width : data->precision;

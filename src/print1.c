@@ -5,8 +5,8 @@
 /*                                                     +:+                    */
 /*   By: kstallen <kstallen@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2020/02/27 15:41:59 by kstallen       #+#    #+#                */
-/*   Updated: 2020/02/27 17:03:16 by kstallen      ########   odam.nl         */
+/*   Created: 2020/02/27 15:41:59 by kstallen      #+#    #+#                 */
+/*   Updated: 2020/04/22 13:38:58 by kris          ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,12 +15,17 @@
 void	print_di(t_data *data)
 {
 	data->arg.li = va_arg(data->var, int);
+	if (data->arg.li == 0)
+		print_di_null(data);
 	calc_field_width(data);
-	if (data->flag_minus && data->arg.li >= 0)
+	if (data->flag_minus && data->arg.li > 0)
 		print_di_min(data);
+	else if (data->flag_zero && !data->flag_minus &&
+	data->precision == -1 && data->arg.li != 0)
+		print_di_zero(data);
 	else if (data->flag_minus && data->arg.li < 0)
 		print_di_min_neg(data);
-	else if (!data->flag_minus && data->arg.li >= 0)
+	else if (!data->flag_minus && data->arg.li > 0)
 		print_di_reg(data);
 	else if (!data->flag_minus && data->arg.li < 0)
 	{
@@ -38,9 +43,9 @@ void	print_di(t_data *data)
 void	print_u(t_data *data)
 {
 	data->arg.lu = va_arg(data->var, unsigned int);
-	if (data->arg.lu < 0)
-		data->arg.lu *= -1;
-	if (data->flag_minus)
+	if (data->arg.lu == 0)
+		print_di_null(data);
+	else if (data->flag_minus)
 		print_lu_min(data);
 	else
 		print_lu(data);
@@ -53,7 +58,9 @@ void	print_hex(t_data *data)
 		data->arg.vp = ft_itoa_base(data->arg.lu, 16, 'a');
 	else if (data->type == 'X')
 		data->arg.vp = ft_itoa_base(data->arg.lu, 16, 'A');
-	if (data->flag_minus)
+	if (!ft_strncmp(data->arg.vp, "0", 2) && data->precision == 0)
+		print_hexadecimal_zero_prec(data);
+	else if (data->flag_minus)
 		print_hexadecimal_min(data);
 	else
 		print_hexadecimal(data);

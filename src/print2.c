@@ -5,8 +5,8 @@
 /*                                                     +:+                    */
 /*   By: kstallen <kstallen@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2020/02/27 15:47:25 by kstallen       #+#    #+#                */
-/*   Updated: 2020/02/28 15:55:40 by kstallen      ########   odam.nl         */
+/*   Created: 2020/02/27 15:47:25 by kstallen      #+#    #+#                 */
+/*   Updated: 2020/04/22 13:36:43 by kris          ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,11 @@ void	print_s(t_data *data)
 {
 	data->arg.vp = va_arg(data->var, char *);
 	if (!data->arg.vp)
+	{
 		data->arg.vp = "(null)";
+		if (data->precision >= 0 && data->precision < 6)
+			data->arg.vp = "";
+	}
 	calc_field_width(data);
 	if (data->flag_minus)
 	{
@@ -38,18 +42,12 @@ void	print_s(t_data *data)
 
 void	print_c(t_data *data)
 {
-	data->arg.li = va_arg(data->var, int);
-	if (data->flag_minus)
-	{
-		putchar_printf(data->arg.li, data);
-		print_width_ascii(data);
-	}
-	print_width_ascii(data);
+	data->arg.c = va_arg(data->var, int);
 	if (!data->flag_minus)
-	{
 		print_width_ascii(data);
-		putchar_printf(data->arg.li, data);
-	}
+	putchar_printf(data->arg.li, data);
+	if (data->flag_minus)
+		print_width_ascii(data);
 }
 
 void	print_p(t_data *data)
@@ -57,10 +55,8 @@ void	print_p(t_data *data)
 	char	*string;
 
 	data->arg.lu = va_arg(data->var, unsigned long);
-	if (!data->arg.lu)
-		string = "0x0";
-	else
-		string = ft_itoa_base_pointer(data->arg.lu, 16);
+	string = !data->arg.lu ? null_pointer(data) :
+	ft_itoa_base_pointer(data->arg.lu, 16);
 	if ((data->precision < (int)ft_strlen(string)) &&
 		(data->width < (int)ft_strlen(string) || data->flag_minus))
 	{
@@ -72,13 +68,17 @@ void	print_p(t_data *data)
 		printf_width_pointer(data);
 		putstr_printf(string, ft_strlen(string), data);
 	}
-	if (data->arg.lu)
-		free(string);
+	free(string);
 }
 
 void	print_per(t_data *data)
 {
+	data->width -= 1;
+	if (!data->flag_minus)
+		print_width_ascii(data);
 	putchar_printf('%', data);
+	if (data->flag_minus)
+		print_width_ascii(data);
 }
 
 void	print_width_ascii(t_data *data)

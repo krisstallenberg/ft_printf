@@ -5,8 +5,8 @@
 /*                                                     +:+                    */
 /*   By: kstallen <kstallen@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2020/02/27 15:47:52 by kstallen       #+#    #+#                */
-/*   Updated: 2020/03/09 13:53:14 by kstallen      ########   odam.nl         */
+/*   Created: 2020/02/27 15:47:52 by kstallen      #+#    #+#                 */
+/*   Updated: 2020/04/22 13:31:40 by kris          ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,18 +47,26 @@ void	select_printer(t_data *data)
 ** Default values are -1 for width and -1 for precision.
 */
 
-void	pop_width_precision(t_data *data)
+void	pop_width(t_data *data)
 {
 	if (data->format[data->i] == '*')
 	{
 		data->width = va_arg(data->var, int);
+		if (data->width < 0)
+		{
+			data->flag_minus = 1;
+			data->width *= -1;
+		}
 		data->i++;
 	}
-	else if (ft_atoi(&data->format[data->i]))
-	{
+	else if (ft_atoi(&data->format[data->i]) >= 0)
 		data->width = ft_atoi(&data->format[data->i]);
-		data->i += data->width >= 0 ? intlen(data->width) : 0;
-	}
+	while (data->format[data->i] >= '0' && data->format[data->i] <= '9')
+		data->i++;
+}
+
+void	pop_precision(t_data *data)
+{
 	if (data->format[data->i] == '.')
 	{
 		data->precision = 0;
@@ -67,12 +75,12 @@ void	pop_width_precision(t_data *data)
 		{
 			data->precision = va_arg(data->var, int);
 			data->i++;
+			return ;
 		}
-		if (ft_atoi(&data->format[data->i]) > 0)
-		{
+		if (ft_atoi(&data->format[data->i]) >= 0)
 			data->precision = ft_atoi(&data->format[data->i]);
-			data->i += data->precision >= 0 ? intlen(data->precision) : 0;
-		}
+		while (data->format[data->i] >= '0' && data->format[data->i] <= '9')
+			data->i++;
 	}
 }
 
@@ -101,7 +109,16 @@ void	populate_execute_struct(t_data *data)
 {
 	data->i++;
 	pop_flag(data);
-	pop_width_precision(data);
+	pop_width(data);
+	pop_precision(data);
+	if (!(is_specifier(data->format[data->i])))
+	{
+		while (data->format[data->i] != '%')
+			data->i--;
+		data->i++;
+		reset_struct(data);
+		return ;
+	}
 	select_printer(data);
 	reset_struct(data);
 }

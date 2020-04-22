@@ -5,8 +5,8 @@
 /*                                                     +:+                    */
 /*   By: kstallen <kstallen@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2020/02/27 15:57:35 by kstallen       #+#    #+#                */
-/*   Updated: 2020/02/27 16:59:39 by kstallen      ########   odam.nl         */
+/*   Created: 2020/02/27 15:57:35 by kstallen      #+#    #+#                 */
+/*   Updated: 2020/04/22 13:37:41 by kris          ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,5 +53,68 @@ void	print_di_min_neg(t_data *data)
 	{
 		putchar_printf(' ', data);
 		field_width++;
+	}
+}
+
+void	print_null_num(t_data *data, int field_width)
+{
+	if (data->precision == 0)
+	{
+		putchar_printf(' ', data);
+		field_width--;
+	}
+	else if (field_width > 0)
+	{
+		putnbr_printf(data->arg.li, data);
+		field_width--;
+	}
+}
+
+void	print_di_null(t_data *data)
+{
+	int		field_width;
+	char	fill;
+
+	if (data->width == 0 && data->precision == 0)
+		return ;
+	fill = data->flag_zero && data->precision < 0 ? '0' : ' ';
+	field_width = data->width > data->precision ?
+		data->width : data->precision;
+	field_width = field_width > 1 ? field_width : 1;
+	if (data->flag_minus)
+	{
+		print_di_null_minus(data);
+		return ;
+	}
+	while (field_width > data->precision && field_width > 1)
+	{
+		putchar_printf(fill, data);
+		field_width--;
+	}
+	while (field_width > 1)
+	{
+		putchar_printf('0', data);
+		field_width--;
+	}
+	print_null_num(data, field_width);
+}
+
+void	print_di_null_minus(t_data *data)
+{
+	int		field_width;
+	char	fill;
+
+	fill = data->flag_zero && data->precision < 0 ? '0' : ' ';
+	field_width = data->width;
+	while (field_width > (data->width - data->precision + 1))
+	{
+		putchar_printf('0', data);
+		field_width--;
+	}
+	print_null_num(data, field_width);
+	while (field_width > 1)
+	{
+		putchar_printf(fill, data);
+		field_width--;
 	}
 }

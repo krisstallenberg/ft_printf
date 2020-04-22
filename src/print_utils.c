@@ -5,8 +5,8 @@
 /*                                                     +:+                    */
 /*   By: kstallen <kstallen@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2020/02/27 16:03:13 by kstallen       #+#    #+#                */
-/*   Updated: 2020/02/27 16:59:39 by kstallen      ########   odam.nl         */
+/*   Created: 2020/02/27 16:03:13 by kstallen      #+#    #+#                 */
+/*   Updated: 2020/04/22 13:38:20 by kris          ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,14 +32,7 @@ void	putnbr_printf(int n, t_data *data)
 {
 	unsigned int s;
 
-	s = 0;
-	if (n >= 0)
-		s = n;
-	if (n < 0)
-	{
-		s = n * -1;
-		putchar_printf('-', data);
-	}
+	s = n;
 	if (s > 9)
 		putnbr_printf(s / 10, data);
 	putchar_printf((s % 10) + '0', data);
@@ -70,7 +63,7 @@ void	calc_field_width(t_data *data)
 			&& data->precision >= 0)
 		{
 			data->width -= data->precision < (int)ft_strlen(data->arg.vp) ?
-				data->precision : ft_strlen(data->arg.vp);
+				data->precision : (int)ft_strlen(data->arg.vp);
 		}
 		else
 			data->width -= ft_strlen(data->arg.vp);

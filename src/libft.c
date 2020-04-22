@@ -5,22 +5,14 @@
 /*                                                     +:+                    */
 /*   By: kstallen <kstallen@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2020/02/27 15:34:36 by kstallen       #+#    #+#                */
-/*   Updated: 2020/03/09 13:35:22 by kstallen      ########   odam.nl         */
+/*   Created: 2020/02/27 15:34:36 by kstallen      #+#    #+#                 */
+/*   Updated: 2020/04/22 13:56:18 by kris          ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-static int	is_space(char c)
-{
-	if ((c >= 9 && c <= 13) || c == 32)
-		return (1);
-	else
-		return (0);
-}
-
-int			ft_atoi(const char *str)
+int		ft_atoi(const char *str)
 {
 	int					i;
 	int					sign;
@@ -29,7 +21,7 @@ int			ft_atoi(const char *str)
 	i = 0;
 	sign = 1;
 	nbr = 0;
-	while (is_space(str[i]))
+	while ((str[i] >= 9 && str[i] <= 13) || str[i] == 32)
 		i++;
 	if (str[i] == '-')
 		sign = -1;
@@ -46,12 +38,12 @@ int			ft_atoi(const char *str)
 	return (sign * nbr);
 }
 
-void		ft_bzero(void *s, size_t n)
+void	ft_bzero(void *s, size_t n)
 {
 	ft_memset(s, 0, n);
 }
 
-size_t		ft_strlen(const char *str)
+size_t	ft_strlen(const char *str)
 {
 	size_t i;
 
@@ -61,7 +53,7 @@ size_t		ft_strlen(const char *str)
 	return (i);
 }
 
-void		*ft_memset(void *b, int c, size_t len)
+void	*ft_memset(void *b, int c, size_t len)
 {
 	int i;
 
@@ -72,4 +64,22 @@ void		*ft_memset(void *b, int c, size_t len)
 		i++;
 	}
 	return (b);
+}
+
+int		ft_strncmp(const char *s1, const char *s2, size_t n)
+{
+	unsigned char *string1;
+	unsigned char *string2;
+
+	string1 = (unsigned char *)s1;
+	string2 = (unsigned char *)s2;
+	while ((*string1 != '\0' || *string2 != '\0') && n)
+	{
+		if (*string1 != *string2)
+			return ((int)*string1 - (int)*string2);
+		string1++;
+		string2++;
+		n--;
+	}
+	return (0);
 }

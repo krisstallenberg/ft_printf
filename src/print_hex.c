@@ -5,8 +5,8 @@
 /*                                                     +:+                    */
 /*   By: kstallen <kstallen@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2020/02/27 15:53:13 by kstallen       #+#    #+#                */
-/*   Updated: 2020/03/09 11:45:13 by kstallen      ########   odam.nl         */
+/*   Created: 2020/02/27 15:53:13 by kstallen      #+#    #+#                 */
+/*   Updated: 2020/04/22 13:37:11 by kris          ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,15 @@ void	print_hexadecimal_min(t_data *data)
 	{
 		putchar_printf(fill, data);
 		field_width--;
+	}
+}
+
+void	print_hexadecimal_zero_prec(t_data *data)
+{
+	while (data->width)
+	{
+		putchar_printf(' ', data);
+		data->width--;
 	}
 }
 
