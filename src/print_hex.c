@@ -6,13 +6,13 @@
 /*   By: kstallen <kstallen@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/02/27 15:53:13 by kstallen      #+#    #+#                 */
-/*   Updated: 2020/04/22 13:37:11 by kris          ########   odam.nl         */
+/*   Updated: 2020/04/22 16:17:32 by kris          ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void	print_hexadecimal(t_data *data)
+void		print_hexadecimal(t_data *data)
 {
 	int		len;
 	int		field_width;
@@ -37,7 +37,7 @@ void	print_hexadecimal(t_data *data)
 	putstr_printf(data->arg.vp, len, data);
 }
 
-void	print_hexadecimal_min(t_data *data)
+void		print_hexadecimal_min(t_data *data)
 {
 	char	fill;
 	int		len;
@@ -59,7 +59,7 @@ void	print_hexadecimal_min(t_data *data)
 	}
 }
 
-void	print_hexadecimal_zero_prec(t_data *data)
+void		print_hexadecimal_zero_prec(t_data *data)
 {
 	while (data->width)
 	{
@@ -68,16 +68,21 @@ void	print_hexadecimal_zero_prec(t_data *data)
 	}
 }
 
-void	printf_width_pointer(t_data *data)
+void		printf_width_pointer(t_data *data)
 {
 	char	fill;
 	int		len;
+	char	*temp;
 
 	fill = ' ';
 	if (data->type == 'd' || data->type == 'i')
 		len = intlen(data->arg.li);
 	if (data->type == 'x' || data->type == 'X')
-		len = ft_strlen(ft_itoa_base(data->arg.lu, 16, 'a'));
+	{
+		temp = ft_itoa_base(data->arg.lu, 16, 'a');
+		len = ft_strlen(temp);
+		free(temp);
+	}
 	if (data->precision > len && !data->flag_zero)
 		fill = '0';
 	if (data->flag_zero && !data->flag_minus &&
