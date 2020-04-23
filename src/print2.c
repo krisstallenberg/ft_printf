@@ -6,7 +6,7 @@
 /*   By: kstallen <kstallen@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/02/27 15:47:25 by kstallen      #+#    #+#                 */
-/*   Updated: 2020/04/22 13:36:43 by kris          ########   odam.nl         */
+/*   Updated: 2020/04/23 16:39:14 by kris          ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,11 +16,7 @@ void	print_s(t_data *data)
 {
 	data->arg.vp = va_arg(data->var, char *);
 	if (!data->arg.vp)
-	{
 		data->arg.vp = "(null)";
-		if (data->precision >= 0 && data->precision < 6)
-			data->arg.vp = "";
-	}
 	calc_field_width(data);
 	if (data->flag_minus)
 	{

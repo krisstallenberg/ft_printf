@@ -6,7 +6,7 @@
 /*   By: kris <kris@student.codam.nl>                 +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/04/22 13:27:58 by kris          #+#    #+#                 */
-/*   Updated: 2020/04/22 14:00:45 by kris          ########   odam.nl         */
+/*   Updated: 2020/04/22 18:52:04 by kris          ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ void		*null_pointer(t_data *data)
 	null_len = data->precision > 0 ? data->precision : 0;
 	null_len = data->precision < 0 ? 1 : 0;
 	size = data->precision > 3 ? data->precision : 4;
-	ptr = malloc(size);
+	ptr = ft_memmalloc(size);
 	ptr[0] = '0';
 	ptr[1] = 'x';
 	if (null_len)

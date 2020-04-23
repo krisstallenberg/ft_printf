@@ -6,7 +6,7 @@
 /*   By: kstallen <marvin@codam.nl>                   +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/03 14:08:28 by kstallen      #+#    #+#                 */
-/*   Updated: 2020/04/22 13:34:41 by kris          ########   odam.nl         */
+/*   Updated: 2020/04/22 18:46:43 by kris          ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,5 +41,6 @@ int		ft_printf(const char *format, ...)
 			putchar_printf(data.format[data.i], &data);
 		data.i++;
 	}
+	va_end(data.var);
 	return (data.char_count);
 }

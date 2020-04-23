@@ -6,7 +6,7 @@
 /*   By: kstallen <kstallen@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/02/27 16:02:22 by kstallen      #+#    #+#                 */
-/*   Updated: 2020/04/22 13:35:08 by kris          ########   odam.nl         */
+/*   Updated: 2020/04/22 18:52:04 by kris          ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,7 +104,7 @@ char	*ft_itoa_base_pointer(unsigned long value, int base)
 		n /= base;
 		i++;
 	}
-	s = malloc(sizeof(char) * (i + 3));
+	s = ft_memmalloc(sizeof(char) * (i + 3));
 	i += 2;
 	s[i] = '\0';
 	i--;
