@@ -6,7 +6,7 @@
 #    By: kstallen <marvin@codam.nl>                   +#+                      #
 #                                                    +#+                       #
 #    Created: 2020/01/13 16:57:49 by kstallen      #+#    #+#                  #
-#    Updated: 2020/04/22 13:58:45 by kris          ########   odam.nl          #
+#    Updated: 2020/04/24 12:44:33 by kris          ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -42,6 +42,7 @@ fclean: clean
 
 test: all test.c
 	gcc -Wall -Werror -Wextra test.c -L. -no-pie libftprintf.a
+	./a.out
 
 re: fclean all
 

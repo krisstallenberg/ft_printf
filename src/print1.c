@@ -6,7 +6,7 @@
 /*   By: kstallen <kstallen@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/02/27 15:41:59 by kstallen      #+#    #+#                 */
-/*   Updated: 2020/04/22 13:38:58 by kris          ########   odam.nl         */
+/*   Updated: 2020/04/24 13:40:25 by kris          ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ void	print_u(t_data *data)
 
 void	print_hex(t_data *data)
 {
-	data->arg.lu = va_arg(data->var, unsigned long);
+	data->arg.lu = va_arg(data->var, unsigned int);
 	if (data->type == 'x')
 		data->arg.vp = ft_itoa_base(data->arg.lu, 16, 'a');
 	else if (data->type == 'X')

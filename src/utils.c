@@ -6,7 +6,7 @@
 /*   By: kstallen <kstallen@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/02/27 16:02:22 by kstallen      #+#    #+#                 */
-/*   Updated: 2020/04/22 18:52:04 by kris          ########   odam.nl         */
+/*   Updated: 2020/04/24 14:30:49 by kris          ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ void	reset_struct(t_data *data)
 	data->width = -1;
 	data->precision = -1;
 	data->type = 0;
+	data->arg.li = 0;
 }
 
 /*

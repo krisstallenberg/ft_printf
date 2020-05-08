@@ -6,7 +6,7 @@
 /*   By: kstallen <kstallen@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/02/27 16:50:25 by kstallen      #+#    #+#                 */
-/*   Updated: 2020/04/22 13:56:51 by kris          ########   odam.nl         */
+/*   Updated: 2020/05/08 22:13:00 by kris          ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,6 +100,6 @@ void				*ft_memset(void *b, int c, size_t len);
 void				*ft_memmalloc(size_t size);
 void				*ft_memcpy(void *dst, const void *src, size_t n);
 int					ft_strncmp(const char *s1, const char *s2, size_t n);
-void				*null_pointer(t_data *data);
+void				*null_pointer(void);
 void				print_hexadecimal_zero_prec(t_data *data);
 #endif

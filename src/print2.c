@@ -6,7 +6,7 @@
 /*   By: kstallen <kstallen@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/02/27 15:47:25 by kstallen      #+#    #+#                 */
-/*   Updated: 2020/04/23 16:39:14 by kris          ########   odam.nl         */
+/*   Updated: 2020/05/08 22:13:17 by kris          ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,8 +51,8 @@ void	print_p(t_data *data)
 	char	*string;
 
 	data->arg.lu = va_arg(data->var, unsigned long);
-	string = !data->arg.lu ? null_pointer(data) :
-	ft_itoa_base_pointer(data->arg.lu, 16);
+	string = data->arg.lu ? ft_itoa_base_pointer(data->arg.lu, 16)
+	 : null_pointer();
 	if ((data->precision < (int)ft_strlen(string)) &&
 		(data->width < (int)ft_strlen(string) || data->flag_minus))
 	{
