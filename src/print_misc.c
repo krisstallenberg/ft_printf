@@ -6,7 +6,7 @@
 /*   By: kris <kris@student.codam.nl>                 +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/04/22 13:27:58 by kris          #+#    #+#                 */
-/*   Updated: 2020/05/08 22:15:17 by kris          ########   odam.nl         */
+/*   Updated: 2020/05/11 15:50:14 by kris          ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ void		*null_pointer(void)
 	return (ptr);
 }
 
-void	*ft_memcpy(void *dst, const void *src, size_t n)
+void		*ft_memcpy(void *dst, const void *src, size_t n)
 {
 	char		*d;
 	const char	*s;
