@@ -6,7 +6,7 @@
 /*   By: kstallen <kstallen@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/02/27 15:57:35 by kstallen      #+#    #+#                 */
-/*   Updated: 2020/04/22 13:37:41 by kris          ########   odam.nl         */
+/*   Updated: 2020/05/11 11:29:58 by kris          ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,7 +111,8 @@ void	print_di_null_minus(t_data *data)
 		putchar_printf('0', data);
 		field_width--;
 	}
-	print_null_num(data, field_width);
+	putnbr_printf(data->arg.li, data);
+	// print_null_num(data, field_width);
 	while (field_width > 1)
 	{
 		putchar_printf(fill, data);
